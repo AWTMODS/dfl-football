@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+:root {
+  /* Color Design Tokens - DFL Football Platform */
+  --primary: #00E676;
+  --primary-rgb: 0, 230, 118;
+  --primary-hover: #00c853;
+  --primary-glow: rgba(0, 230, 118, 0.35);
+
+  --secondary: #0ea5e9;
+  --secondary-rgb: 14, 165, 233;
+  
+  --accent: #f59e0b;
+  --accent-rgb: 245, 158, 11;
+
+  --bg-pitch: #060B11;
+  --bg-surface: #0E1624;
+  --bg-surface-elevated: #162236;
+  --bg-card: rgba(14, 22, 36, 0.85);
+
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(0, 230, 118, 0.5);
+
+  --status-success: #10B981;
+  --status-warning: #F59E0B;
+  --status-danger: #EF4444;
+  --status-info: #3B82F6;
+
+  --font-sans: var(--font-geist-sans, system-ui, -apple-system, sans-serif);
+}
+
+/* Theme presets that can be toggled from Admin Settings */
+[data-theme="champions-gold"] {
+  --primary: #F59E0B;
+  --primary-rgb: 245, 158, 11;
+  --primary-hover: #D97706;
+  --primary-glow: rgba(245, 158, 11, 0.35);
+  --secondary: #10B981;
+  --border-focus: rgba(245, 158, 11, 0.5);
+}
+
+[data-theme="volt-neon"] {
+  --primary: #CCFF00;
+  --primary-rgb: 204, 255, 0;
+  --primary-hover: #B2DF00;
+  --primary-glow: rgba(204, 255, 0, 0.35);
+  --secondary: #00F0FF;
+  --border-focus: rgba(204, 255, 0, 0.5);
+}
+
+[data-theme="classic-crimson"] {
+  --primary: #EF4444;
+  --primary-rgb: 239, 68, 68;
+  --primary-hover: #DC2626;
+  --primary-glow: rgba(239, 68, 68, 0.35);
+  --secondary: #F59E0B;
+  --border-focus: rgba(239, 68, 68, 0.5);
+}
+
+[data-theme="arctic-frost"] {
+  --primary: #38BDF8;
+  --primary-rgb: 56, 189, 248;
+  --primary-hover: #0284C7;
+  --primary-glow: rgba(56, 189, 248, 0.35);
+  --secondary: #818CF8;
+  --border-focus: rgba(56, 189, 248, 0.5);
+}
+
+body {
+  background-color: var(--bg-pitch);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Football Turf & Stadium Atmosphere utilities */
+.pitch-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.stadium-glow {
+  background: radial-gradient(circle at 50% -20%, rgba(var(--primary-rgb), 0.22) 0%, rgba(6, 11, 17, 0) 70%);
+}
+
+.card-glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+}
+
+.card-glass-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-glass-hover:hover {
+  border-color: rgba(var(--primary-rgb), 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.5), 0 0 16px -2px rgba(var(--primary-rgb), 0.15);
+}
+
+.ticket-notch-left {
+  position: relative;
+}
+.ticket-notch-left::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -12px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--bg-pitch);
+}
+.ticket-notch-right::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -12px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--bg-pitch);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-pitch);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--primary-rgb), 0.4);
+}
